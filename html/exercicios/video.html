@@ -1,0 +1,51 @@
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+        Seu brownser nao suporta esse video
+</video>
+
+<div class="progresso" wm-progresso="meuVideo">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo" onclick=meuVideo.play()>Play</button>
+    <button wm-pause="meuVideo" onclick=meuVideo.pause()>Pause</button>
+    <button onclick=alterar()>Posicao</button>
+</div>
+
+<p></p>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+        
+    }
+
+</style>
+
+<script>
+    
+    function carregar(){
+        setInterval(() => {
+        let duracao = document.getElementById("meuVideo").duration
+        let posicaoAtual = document.getElementById("meuVideo").currentTime
+        document.querySelector('[wm-progresso] > div').style.width=`${(100/duracao) *posicaoAtual}%`
+
+       });
+    
+    }
+
+    carregar()
+</script>
